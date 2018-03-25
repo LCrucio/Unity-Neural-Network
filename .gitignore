@@ -32,3 +32,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+NeuralNetwork/Library/metadata/
+NeuralNetwork/Library/ShaderCache/
+NeuralNetwork/Temp/
+NeuralNetwork/Library/UnityAssemblies/

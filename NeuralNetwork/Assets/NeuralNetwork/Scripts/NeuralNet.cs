@@ -77,7 +77,11 @@ public class NeuralNet
                 }
 
                 rawNeuronValue -= Layers[i].Neurons[j].Bias;
-                Layers[i].Neurons[j].Output = ActivationFunction(rawNeuronValue);
+
+                if(i == HiddenLayerNum)
+                    Layers[i].Neurons[j].Output = ActivationFunctionOut(rawNeuronValue);
+                else
+                    Layers[i].Neurons[j].Output = ActivationFunction(rawNeuronValue);
                 outputs.Add(Layers[i].Neurons[j].Output);
             }
         }
@@ -139,10 +143,43 @@ public class NeuralNet
     }
 
 
-    // Use this for initialization
-    private double Sigmoid (double value) {
+    private double ActivationFunctionOut(double value)
+    {
+        return Sigmoid(value);
+    }
+
+
+    private double Sigmoid (double value)
+    {
         double k = (double)System.Math.Exp(value);
         return k / (1.0f + k);
 	}
+
+    private double Step(double value)
+    {
+        if (value < 0) return 0;
+        return 1;
+    }
+
+    private double TanH(double value)
+    {
+        return (2*(Sigmoid(2*value) - 1));
+    }
+
+    /// <summary>
+    /// rectified linear unit
+    /// </summary>
+    private double ReLu(double value)
+    {
+        if(value > 0)
+            return value;
+        return 0;
+    }
+
+    private double LeakyReLu(double value)
+    {
+        if (value < 0) return 0.01 * value;
+        return value;
+    }
 	
 }

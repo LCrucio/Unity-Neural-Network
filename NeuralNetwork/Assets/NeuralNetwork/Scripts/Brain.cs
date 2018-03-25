@@ -10,11 +10,11 @@ public class Brain : MonoBehaviour
     
 	void Start ()
 	{
-	    _neuralNet = new NeuralNet(2, 1, 1, 2, 0.9);
+	    _neuralNet = new NeuralNet(2, 1, 1, 4, 0.9);
 
 	    List<double> result;
 
-	    for (int i = 0; i < 1000000; i++)
+	    for (int i = 0; i < 10000; i++)
 	    {
 	        _sumSquareError = 0;
 	        result = Train(1, 1, 0);

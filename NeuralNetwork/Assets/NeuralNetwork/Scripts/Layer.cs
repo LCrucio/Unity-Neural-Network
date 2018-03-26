@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 public class Layer
 {
-
     public int NeuronNum;
     public List<Neuron> Neurons = new List<Neuron>();
 

@@ -1,27 +1,30 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-///     Equivalent to the perceptron model
-/// </summary>
-public class Neuron
+namespace TemplateNetwork
 {
-    public double Bias;
-    public double ErrorGradient;
-    public List<double> Inputs = new List<double>();
-
-    public int InputsNum;
-    public double Output;
-
-    public List<double> Weights = new List<double>();
-
-    public Neuron(int inputsNum)
+    /// <summary>
+    ///     Equivalent to the perceptron model
+    /// </summary>
+    public class Neuron
     {
-        Bias = Random.Range(-1.0f, 1.0f);
-        InputsNum = inputsNum;
-        for (int i = 0; i < inputsNum; i++)
+        public double Bias;
+        public double ErrorGradient;
+        public List<double> Inputs = new List<double>();
+
+        public int InputsNum;
+        public double Output;
+
+        public List<double> Weights = new List<double>();
+
+        public Neuron(int inputsNum)
         {
-            Weights.Add(Random.Range(-1.0f, 1.0f));
+            Bias = Random.Range(-1.0f, 1.0f);
+            InputsNum = inputsNum;
+            for (int i = 0; i < inputsNum; i++)
+            {
+                Weights.Add(Random.Range(-1.0f, 1.0f));
+            }
         }
     }
 }

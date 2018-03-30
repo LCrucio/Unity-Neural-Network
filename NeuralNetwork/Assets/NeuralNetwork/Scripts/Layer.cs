@@ -1,16 +1,19 @@
 ﻿using System.Collections.Generic;
 
-public class Layer
+namespace TemplateNetwork
 {
-    public int NeuronNum;
-    public List<Neuron> Neurons = new List<Neuron>();
-
-    public Layer(int neuronNum, int neuronInputsNum)
+    public class Layer
     {
-        NeuronNum = neuronNum;
-        for (int i = 0; i < neuronNum; i++)
+        public int NeuronNum;
+        public List<Neuron> Neurons = new List<Neuron>();
+
+        public Layer(int neuronNum, int neuronInputsNum)
         {
-            Neurons.Add(new Neuron(neuronInputsNum));
+            NeuronNum = neuronNum;
+            for (int i = 0; i < neuronNum; i++)
+            {
+                Neurons.Add(new Neuron(neuronInputsNum));
+            }
         }
     }
 }

@@ -15,6 +15,9 @@ namespace PongNetwork
         public float PaddleMaxY = 17.4f;
         public float PaddleMaxSpeed = 15;
 
+        public bool Learn = true;
+        public float LearningRate = 0.02f;
+
         public float ScoreSaved = 0;
         public float ScoreMissed = 0;
 
@@ -23,7 +26,7 @@ namespace PongNetwork
         // Use this for initialization
         void Start()
         {
-            _neuralNet = new TemplateNetwork.NeuralNet(6, 1, 1, 12, 0.15f);
+            _neuralNet = new TemplateNetwork.NeuralNet(6, 1, 1, 12, LearningRate);
             _ballRB = Ball.GetComponent<Rigidbody2D>();
         }
 
@@ -71,7 +74,7 @@ namespace PongNetwork
             {
                 float y = hit.point.y - Paddle.transform.position.y;
 
-                output = Run(Ball.transform.position.x, Ball.transform.position.y, _ballRB.velocity.x, _ballRB.velocity.y, Paddle.transform.position.x, Paddle.transform.position.y, y, true);
+                output = Run(Ball.transform.position.x, Ball.transform.position.y, _ballRB.velocity.x, _ballRB.velocity.y, Paddle.transform.position.x, Paddle.transform.position.y, y, Learn);
                 YVall = (float)output[0];
             }
             else

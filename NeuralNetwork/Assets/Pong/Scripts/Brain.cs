@@ -63,7 +63,11 @@ namespace PongNetwork
 
             RaycastHit2D hit = Physics2D.Raycast(Ball.transform.position, _ballRB.velocity, 100, layerMask);
 
-            if(hit.collider!=null && hit.collider.tag == "backwall")
+            if (hit.collider != null && hit.collider.tag == "tops") {
+                Vector3 reflection = Vector3.Reflect(_ballRB.velocity, hit.normal);
+                hit = Physics2D.Raycast(hit.point, reflection, 1000, layerMask);
+            }
+            if (hit.collider != null && hit.collider.tag == "backwall")
             {
                 float y = hit.point.y - Paddle.transform.position.y;
 
